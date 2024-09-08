@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import LogoImage from '../../assets/img/logo.svg';
+
+// コメント: PropsインターフェースとimagePath変数は使用されていないため削除しました。
+// LogoImageのインポートパスを修正しました。
+
+---
+
+<a href="/" class="logo">
+  <Image src={LogoImage} alt="SP WEBCREAT." class="logoImage"/>
+</a>
+
+<style lang="stylus">
+  .logo
+    width: 60px
+    display: block
+    &Image
+      width: 100%
+      height: 100%
+      object-fit: contain
+</style>

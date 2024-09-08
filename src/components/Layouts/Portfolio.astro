@@ -1,0 +1,118 @@
+---
+import { Image } from 'astro:assets'
+import PortfolioImage01 from '../../assets/img/portolio01.jpg'
+import PortfolioImage02 from '../../assets/img/portolio02.jpg'
+
+const portfolio = [
+  {
+    image: PortfolioImage02,
+    title: 'AI MONSTER CREATOR.',
+    url: 'https://ai-monster-creator.vercel.app/',
+    tech: [
+      'Next.js 14',
+      'Axios',
+      'Getimg.aiAPI',
+      'TypeScript',
+      'Tailwind',
+      'Vercel KV',
+      'Vercel Blob',
+    ],
+    description: 'ユーザーが入力した特徴と属性を基にAIを使用してユニークなモンスター画像を生成できるサイトです。フロントエンドはNext.js 14、バックエンドはVercel KV、Vercel Blobを使用しています。',
+  },
+  {
+    image: PortfolioImage01,
+    title: 'SP WEB CREAT.',
+    url: 'https://www.sp-webcreat.pro/',
+    tech: [
+      'Astro.js',
+      'Three.js',
+      'TypeScript',
+      'Tailwind',
+      'Wordpress',
+      'PHP',
+      'MySQL',
+    ],
+    description: '動きのある3Dグラフィックスはreact-three/fiberを使用しています。フロントエンドはモダンJavascript、ブログ部分のバックエンドはWordpressを使用したヘッドレスCMSを使用中です。',
+  },
+]
+---
+
+
+<section class="sec portfolios">
+
+
+  <div class="content">
+
+    <div class="contentTitle">
+      <h2 class="title">PORTFOLIOS</h2>
+    </div>
+
+    <div class="contentBody">
+
+
+      <div class="cards">
+        {
+          portfolio.map((item) => (
+            <div class="card">
+              <a class="cardImage hover:opacity-90" href={item.url} target="_blank">
+                <Image src={item.image} alt="profile" />
+                <span>{item.url}</span>
+              </a>
+              <div class="cardMeta">
+                <div class="cardMetaTitle">{item.title}</div>
+                <div class="cardMetaDescription">
+                  {item.description}
+                </div>
+                <ul class="cardMetaTech">
+                  {
+                    item.tech.map((tech) => (
+                      <li class="cardMetaTechItem">{tech}</li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+<style lang="stylus">
+  .cards
+    @apply max-w-5xl mx-auto
+    > * + * 
+      @apply mt-10 
+
+  .card
+    @apply grid gap-10 
+    grid-template-columns: 35% 1fr
+    @media (max-width: 768px)
+      @apply grid-cols-1
+
+  .cardImage
+    @apply transition-opacity duration-300 relative
+    img
+      @apply w-full h-full object-cover
+    span
+      @apply bg-primary p-2 w-full block text-center text-white absolute bottom-0 left-0 text-sm font-bold
+
+  .cardMeta
+    > * + * 
+      @apply mt-8
+    &Title
+      @apply text-2xl font-extrabold
+    &Description
+      line-height 1.8
+    &Tech
+      @apply flex flex-wrap gap-2
+      li
+        @apply bg-bk text-white px-2 py-1 text-sm font-bold
+
+</style>

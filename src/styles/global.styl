@@ -1,0 +1,34 @@
+@import 'variables/*'
+@import 'utils/*'
+
+body 
+  font-family: "Montserrat", sans-serif;
+  background-color:  var(--bk);
+  color: var(--white);
+  line-height 1.8
+  overflow-wrap: anywhere
+
+
+section 
+  &.sec 
+    position relative
+    z-index 1
+    @apply w-screen py-36 border-b border-gray-500
+
+    @media (max-width: 768px)
+      width 90%
+      margin-inline auto
+  
+
+
+  .content 
+    @apply grid place-items-center;
+  
+    > * + * 
+      @apply mt-48;
+  
+    &Title 
+      @apply text-6xl font-extrabold;
+      @media (max-width: 768px)
+        @apply text-5xl
+  

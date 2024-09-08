@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import mainVisualLogo from '@/assets/img/logo-mark.svg';
+---
+  
+  <section class="mainvisual">
+
+		<h2 class="mainvisualInfo font-extrabold grid gap-y-2">
+			<span class="text-lg text-center">Web Engineer</span>
+			<div class="title flex flex-col place-items-center gap-2 text-4xl md:text-6xl md:flex-row">
+				<Image src={mainVisualLogo} alt="logo" />
+				SP WEB CREAT.
+			</div>
+			<span class="text-lg text-center">Portfolio website</span>
+		</h2>
+
+	</section>
+
+
+  <style lang="stylus">
+    .mainvisual 
+      width: 100%
+      height: 100vh
+      position: relative
+      &Info 
+        color: var(--white)
+        display grid
+        place-items: center
+        width: 100%
+        position: absolute
+        top 50%
+        translate -50% -50%
+        left: 50%
+        z-index: 99
+        text-shadow 0 0 10px rgba(0,0,0,0.5)
+    .sec 
+      position: relative
+      z-index: 99
+      background-image: linear-gradient(180deg,rgba(85, 85, 85, 0), rgba(0, 0, 0, 0.8))
+  </style>

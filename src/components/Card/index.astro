@@ -1,0 +1,21 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+}
+
+const { href, title, body } = Astro.props;
+import styles from './index.module.styl'
+---
+
+<li class={styles.card}>
+  <a class={styles.cardLink} href={href}>
+    <h2 class={styles.cardTitle}>
+      {title}
+    </h2>
+    <p class={styles.cardBody}>
+      {body}
+    </p>
+  </a>
+</li>

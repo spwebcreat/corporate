@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MainVisual from '../components/MainVisual/index.astro'
+import About from '../components/Layouts/About.astro'
+import Portfolio from '../components/Layouts/Portfolio.astro'
+import Works from '../components/Layouts/Works.astro'
+import Blogs from '../components/Layouts/Blogs.astro'
+const description = "SP Web Creatは、WEB制作会社での勤務を経てフリーランスのWEBエンジニア/UI・UXデザイナーとして活動中。デザイン・コーディング・WordPress・モダンJavaScript、またSEO対策やアクセス解析などのWEBマーケティングについても経験してきた事から幅広いスキルを駆使してクライアント様のニーズに応じ柔軟な仕事をさせて頂いております。"
+---
+
+<Layout 
+	title="SP WEBCREAT."
+	description={description} >
+	<MainVisual />
+	<main class="main-content">
+		<About />
+		<Portfolio />
+		<Works />
+		<Blogs />
+	</main>
+
+</Layout>

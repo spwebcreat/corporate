@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets'
+import Works01Img from '../../assets/img/works01.jpg'
+import Works02Img from '../../assets/img/works02.jpg'
+
+const portfolio = [
+
+  {
+    image: Works01Img,
+    title: '合同会社CLAB.様',
+    url: 'https://www.creative-laboratory.co.jp/',
+    tech: [
+      'Wordpress',
+      'PHP',
+      'MySQL',
+      'Lenis.js',
+      'GSAP',
+    ],
+    description: '販売促進に役立つクリエイティブを制作する会社様。Figmaでデザイン、WordPressdでコーディングと制作全般・インフラ周りすべてを担当。',
+  },
+  {
+    image: Works02Img,
+    title: '株式会社てりとりー様',
+    url: 'https://territory.okinawa.jp/',
+    tech: [
+      'Wordpress',
+      'PHP',
+      'MySQL',
+      'Lenis.js',
+      'LottieAnimation',
+      'GSAP',
+      
+    ],
+    description: '沖縄料理飲食店様のWEBサイト。Figmaでデザイン、WordPressでコーディングと制作全般・インフラ周りすべてを担当。企業さまの魅力を活かしつつ、沖縄らしさを波やシーザー・首里城などで表現。多彩な表現やページ速度対策のため軽量のLottieアニメーションなども採用してみました。',
+  },
+]
+---
+
+
+<section class="sec works">
+
+
+  <div class="content">
+
+    <div class="contentTitle">
+      <h2 class="title">Works</h2>
+    </div>
+
+    <div class="contentBody">
+
+
+      <div class="cards">
+        {
+          portfolio.map((item) => (
+            <div class="card">
+              <a class="cardImage hover:opacity-90" href={item.url} target="_blank">
+                <Image src={item.image} alt="profile" />
+                <span>{item.url}</span>
+              </a>
+              <div class="cardMeta">
+                <div class="cardMetaTitle">{item.title}</div>
+                <div class="cardMetaDescription">
+                  {item.description}
+                </div>
+                <ul class="cardMetaTech">
+                  {
+                    item.tech.map((tech) => (
+                      <li class="cardMetaTechItem">{tech}</li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+<style lang="stylus">
+  .cards
+    @apply max-w-5xl mx-auto
+    > * + * 
+      @apply mt-10 
+
+  .card
+    @apply grid gap-10 
+    grid-template-columns: 35% 1fr
+    @media (max-width: 768px)
+      @apply grid-cols-1
+
+  .cardImage
+    @apply transition-opacity duration-300 relative
+    img
+      @apply w-full h-full object-cover
+    span
+      @apply bg-primary p-2 w-full block text-center text-white absolute bottom-0 left-0 text-sm font-bold
+
+  .cardMeta
+    > * + * 
+      @apply mt-8
+    &Title
+      @apply text-3xl font-extrabold
+    &Description
+      line-height 1.8
+    &Tech
+      @apply flex flex-wrap gap-2
+      li
+        @apply bg-bk text-white px-2 py-1 text-sm font-bold
+
+</style>

@@ -1,0 +1,61 @@
+---
+import Logo from '../Logo/index.astro'
+
+const navItems = [
+  {name:'About',href:'/#about'},
+  {name:'Portfolios',href:'/#portfolios'},
+  // {name:'Blog',href:'/#blog'},
+  // {name:'Contact',href:'/contact'}
+]
+---
+<header class="flex justify-between items-center px-10 py-4">
+  <h1>
+    <Logo />
+  </h1>
+  <nav>
+    <ul class="flex gap-5">
+      {navItems.map((item) => (
+        <li><a class="font-bold" href={item.href}>{item.name}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style lang="stylus">
+  header
+    background-color: var(--bk)
+    color: var(--white)
+    position: sticky
+    top: 0
+    left: 0
+    width 100%
+    z-index: 100
+    opacity 0
+    translate: 0 -100px
+    transition opacity 0.3s , translate 0.3s
+    &.fixed
+      opacity 1
+      translate: 0 0
+</style>
+
+
+<script>
+  function initHeaderObserver() {
+    const headerFixObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          document.querySelector('header')?.classList.add('fixed')
+        } else {
+          document.querySelector('header')?.classList.remove('fixed')
+        }
+      })
+    }, { rootMargin: '-45% 0px' })
+
+    const headerElement = document.querySelector('.main-content');
+    if (headerElement !== null) {
+      headerFixObserver.observe(headerElement);
+    }
+  }
+  document.addEventListener('astro:page-load', initHeaderObserver);
+  initHeaderObserver();
+</script>
